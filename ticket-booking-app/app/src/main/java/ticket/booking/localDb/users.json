@@ -70,5 +70,184 @@
     "hashed_password": "$2a$10$O/OWE.xh3gttMANiM4BIX.mo.4/myik1J739DZ25ecVENk8xhMCW2",
     "tickets_booked": [],
     "user_id": "fe46da4d-c8d1-4229-97e6-600dce6941e8"
+  },
+  {
+    "name": "ayyush08",
+    "password": "12345678",
+    "hashed_password": "$2a$10$mdsrAYYpX63gYW1YgpPCUuPAWOhDUdhunZ/OoiFvuVIQT1B4LSX/O",
+    "tickets_booked": [
+      {
+        "ticket_id": "a1716ca2-da6c-49f8-92e3-c0315d520d01",
+        "user_id": "5acd8acc-3927-4ebd-b987-c147bc9895d4",
+        "source": "source",
+        "destination": "destination",
+        "date_of_travel": "Thu Apr 09 02:09:18 IST 2026",
+        "train": {
+          "train_id": "bacs",
+          "train_no": "12345",
+          "seats": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "station_times": {
+            "bangalore": "13:50:00",
+            "jaipur": "13:50:00",
+            "delhi": "13:50:00"
+          },
+          "stations": [
+            "bangalore",
+            "jaipur",
+            "delhi"
+          ],
+          "train_info": "Train ID: bacs Train No: 12345"
+        },
+        "ticket_info": "Ticket ID: a1716ca2-da6c-49f8-92e3-c0315d520d01 belongs to User 5acd8acc-3927-4ebd-b987-c147bc9895d4 from source to destination on Thu Apr 09 02:09:18 IST 2026"
+      },
+      {
+        "ticket_id": "2a15c566-6c50-4823-a2e4-ee41aa529469",
+        "user_id": "5acd8acc-3927-4ebd-b987-c147bc9895d4",
+        "source": "source",
+        "destination": "destination",
+        "date_of_travel": "Thu Apr 09 02:11:28 IST 2026",
+        "train": {
+          "train_id": "bacs",
+          "train_no": "12345",
+          "seats": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "station_times": {
+            "bangalore": "13:50:00",
+            "jaipur": "13:50:00",
+            "delhi": "13:50:00"
+          },
+          "stations": [
+            "bangalore",
+            "jaipur",
+            "delhi"
+          ],
+          "train_info": "Train ID: bacs Train No: 12345"
+        },
+        "ticket_info": "Ticket ID: 2a15c566-6c50-4823-a2e4-ee41aa529469 belongs to User 5acd8acc-3927-4ebd-b987-c147bc9895d4 from source to destination on Thu Apr 09 02:11:28 IST 2026"
+      },
+      {
+        "ticket_id": "eb7277aa-027d-4822-b846-f8833c181a6f",
+        "user_id": "5acd8acc-3927-4ebd-b987-c147bc9895d4",
+        "source": "source",
+        "destination": "destination",
+        "date_of_travel": "Thu Apr 09 02:11:56 IST 2026",
+        "train": {
+          "train_id": "bacs",
+          "train_no": "12345",
+          "seats": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "station_times": {
+            "bangalore": "13:50:00",
+            "jaipur": "13:50:00",
+            "delhi": "13:50:00"
+          },
+          "stations": [
+            "bangalore",
+            "jaipur",
+            "delhi"
+          ],
+          "train_info": "Train ID: bacs Train No: 12345"
+        },
+        "ticket_info": "Ticket ID: eb7277aa-027d-4822-b846-f8833c181a6f belongs to User 5acd8acc-3927-4ebd-b987-c147bc9895d4 from source to destination on Thu Apr 09 02:11:56 IST 2026"
+      }
+    ],
+    "user_id": "5acd8acc-3927-4ebd-b987-c147bc9895d4"
   }
 ]
