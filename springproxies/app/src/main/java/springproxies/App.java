@@ -1,5 +1,6 @@
 package springproxies;
 
+import springproxies.cglib.CgClass;
 import springproxies.classes.Man;
 import springproxies.classes.Person;
 import springproxies.classes.PersonInvocationHandler;
@@ -20,6 +21,8 @@ public class App {
         proxyCurator.introduce(curator.getName());
         proxyCurator.sayAge(curator.getAge());
         proxyCurator.sayWhereFrom(curator.getCity(), curator.getCountry());
+
+        CgClass.main(args);
 
     }
 }

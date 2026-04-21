@@ -21,6 +21,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+    implementation 'cglib:cglib:3.3.0'
+    implementation 'org.ow2.asm:asm:9.1'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
