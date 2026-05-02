@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
 @Service
 public class JwtService {
-    public static  final String SECRET =  "secret";
+    public static  final String SECRET =  "Kt5s4/bV855+eVHuQSEuvuYyP3+1EdtyE3mmCUpAsxU=";
 
     public String extractUsername(String token)
     {
@@ -37,13 +38,17 @@ public class JwtService {
         final String username = extractUsername(token);
         return  (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+    public String GenerateToken(String username){
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
+    }
 
     private String createToken(Map<String,Object> claims, String username){
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() * 1000*60*1))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000*60))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

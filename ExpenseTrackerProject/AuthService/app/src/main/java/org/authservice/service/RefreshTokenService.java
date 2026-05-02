@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -39,6 +40,10 @@ public class RefreshTokenService {
             throw new RuntimeException(token.getToken() + " Refresh Token Expired. Please login again.");
         }
         return token;
+    }
+
+    public Optional<RefreshToken> findByToken(String token){
+        return refreshTokenRepository.findByToken(token); //it is a common practice to never call repository directly in controller instead always do so in a service
     }
 
 }

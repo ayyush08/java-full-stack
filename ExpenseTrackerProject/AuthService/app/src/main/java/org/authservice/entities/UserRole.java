@@ -18,7 +18,7 @@ public class UserRole {
     private long roleId;
 
 
-    private String name
+    private String name;
 
 
 }
