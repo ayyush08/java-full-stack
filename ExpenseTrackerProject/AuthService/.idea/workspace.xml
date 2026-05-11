@@ -34,7 +34,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AuthService" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -136,6 +141,7 @@
       <workItem from="1777735338802" duration="3480000" />
       <workItem from="1777738898379" duration="2832000" />
       <workItem from="1777889605061" duration="213000" />
+      <workItem from="1778524897696" duration="2282000" />
     </task>
     <servers />
   </component>
