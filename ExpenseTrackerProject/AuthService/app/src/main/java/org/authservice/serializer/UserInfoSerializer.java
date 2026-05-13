@@ -16,7 +16,7 @@ public class UserInfoSerializer implements Serializer<UserInfoDTO> {
         byte[] returnValue = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try{
-            returnValue = objectMapper.writeValueAsString(topic).getBytes();
+            returnValue = objectMapper.writeValueAsString(data).getBytes();
         }catch (Exception e){
             e.printStackTrace();
         }
