@@ -1,8 +1,9 @@
 package com.userservice.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tools.jackson.databind.ObjectMapper;
 
 
 //to let spring store an instance of objectmapper the moment server starts
@@ -10,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
 public class UserConfig {
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper();
+        return new tools.jackson.databind.ObjectMapper();
     }
 }

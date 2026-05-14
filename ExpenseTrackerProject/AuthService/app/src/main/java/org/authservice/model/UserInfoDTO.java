@@ -1,6 +1,7 @@
 package org.authservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -10,20 +11,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.authservice.entities.UserInfo;
 
-@JsonNaming (PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonNaming (PropertyNamingStrategies.SnakeCaseStrategy.class)
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserInfoDTO  {
-    private String firstName;
-    private String lastName;
+public class UserInfoDTO extends UserInfo
+{
+    @JsonProperty("first_name")
+    private String firstName; // first_name
 
+    @JsonProperty("last_name")
+    private String lastName; //last_name
+
+    @JsonProperty("phone_number")
     private Long phoneNumber;
 
-    private String username;
-    private String password;
+    private String email; // email
 
-    private String email;
+
 }
