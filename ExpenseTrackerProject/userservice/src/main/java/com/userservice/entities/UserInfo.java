@@ -10,19 +10,23 @@ import tools.jackson.databind.PropertyNamingStrategies;
 import tools.jackson.databind.annotation.JsonNaming;
 
 
-
+@Entity
 @Getter
 @Setter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
+@Table(name = "users")
 @JsonIgnoreProperties(ignoreUnknown = true) //do not deserialize null values
-public class UserInfoDto {
+public class UserInfo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
     @JsonProperty("user_id")
-    @NonNull
     private String userId;
 
     @JsonProperty("first_name")
@@ -44,14 +48,4 @@ public class UserInfoDto {
     @JsonProperty("profile_pic")
 //    @NonNull
     private String profilePic;
-
-    public UserInfo tranformToUserInfo(){
-        return UserInfo.builder()
-                .firstName(this.firstName)
-                .lastName(this.lastName)
-                .email(this.email)
-                .phoneNumber(this.phoneNumber)
-                .userId(this.userId)
-                .profilePic(this.profilePic).build();
-    }
 }

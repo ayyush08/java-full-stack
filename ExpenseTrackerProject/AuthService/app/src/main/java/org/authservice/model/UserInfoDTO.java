@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.authservice.entities.UserInfo;
 
 @JsonNaming (PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -19,6 +16,7 @@ import org.authservice.entities.UserInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoDTO extends UserInfo
 {
+    @NonNull
     @JsonProperty("first_name")
     private String firstName; // first_name
 
