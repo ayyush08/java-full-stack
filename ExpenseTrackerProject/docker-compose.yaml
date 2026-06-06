@@ -1,7 +1,6 @@
-version: '3.8'
+
 
 services:
-
   mysql:
     image: mysql:8.0
     container_name: mysql-expensetracker
@@ -41,12 +40,49 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
 
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - microservice-network
 
+  user-service:
+    image: user-service:latest
+    container_name: user-service-expensetracker
+    ports:
+      - "9810:9810"
+    depends_on:
+      - kafka
+      - mysql
+    networks:
+      - microservice-network
+
+  auth-service:
+    image: auth-service:latest
+    container_name: auth-service-expensetracker
+    ports:
+      - "9898:9898"
+    depends_on:
+      - kafka
+      - mysql
+    networks:
+      - microservice-network
+  kong:
+    image: kong:latest
+    container_name: kong
+    depends_on:
+      - auth-service
+      - user-service
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yml
+    volumes:
+      - ./kong.yml:/kong/declarative/kong.yml
+    networks:
+      - microservice-network
 volumes:
   mysql_data:
 
