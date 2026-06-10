@@ -6,7 +6,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
-public class ExpenseDeserializer implements Deserializer {
+public class ExpenseDeserializer implements Deserializer<ExpenseDto> {
 
 
     @Override
@@ -16,7 +16,7 @@ public class ExpenseDeserializer implements Deserializer {
         ExpenseDto expenseDto = null;
 
         try {
-            expenseDto = objectMapper.readValue(topic, ExpenseDto.class);
+            expenseDto = objectMapper.readValue(data, ExpenseDto.class);
 
         }
         catch (Exception e) {
