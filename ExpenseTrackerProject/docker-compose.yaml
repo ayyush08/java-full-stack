@@ -1,5 +1,3 @@
-
-
 services:
   mysql:
     image: mysql:8.0
@@ -38,13 +36,9 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
-
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
     networks:
       - microservice-network
@@ -54,9 +48,16 @@ services:
     container_name: user-service-expensetracker
     ports:
       - "9810:9810"
+    environment:
+      KAFKA_HOST: ${KAFKA_HOST}
+      KAFKA_PORT: ${KAFKA_PORT}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DB: userservice
     depends_on:
       - kafka
       - mysql
+      - auth-service
     networks:
       - microservice-network
 
@@ -65,9 +66,48 @@ services:
     container_name: auth-service-expensetracker
     ports:
       - "9898:9898"
+    environment:
+      KAFKA_HOST: ${KAFKA_HOST}
+      KAFKA_PORT: ${KAFKA_PORT}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DB: authservice
     depends_on:
       - kafka
       - mysql
+    networks:
+      - microservice-network
+    
+  expense-service:
+    image: expense-service:latest
+    container_name: expense-service-expensetracker
+    ports:
+      - "9820:9820"
+    environment:
+      KAFKA_HOST: ${KAFKA_HOST}
+      KAFKA_PORT: ${KAFKA_PORT}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DB: expenseservice
+    depends_on:
+      - kafka
+      - mysql
+    networks:
+      - microservice-network
+  ds-service:
+    image: ds-service:latest
+    container_name: ds-service-expensetracker
+    ports:
+      - "8010:8010"
+    environment:
+      KAFKA_HOST: ${KAFKA_HOST}
+      KAFKA_PORT: ${KAFKA_PORT}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY}
+    depends_on:
+      - kafka
+      - mysql
+      - expense-service
+      - user-service
     networks:
       - microservice-network
   kong:
